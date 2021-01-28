@@ -1,0 +1,28 @@
+.header { grid-area: header; }
+.menu { grid-area: menu; }
+.main { grid-area: main; 
+     font-family: 'Open Sans', 'sans-serif';
+       background-color: #fff;
+     color: #444;}
+.right { grid-area: right; }
+.footer { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main main right'
+    'footer footer footer footer footer footer';
+  grid-gap: 5px;
+  color: #fff;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgb(191, 207, 241);
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 150%;
+  margin-bottom: 10px;
+}

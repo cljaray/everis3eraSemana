@@ -1,0 +1,9 @@
+<app-forma-pcr></app-forma-pcr>
+
+<button (click)="guardar()">Guardar</button>
+
+
+<div *ngIf="nuevoPCR">
+    <p>Nuevo PCR creado</p>
+    <p> {{ pcrValues | json }} </p>
+</div> 

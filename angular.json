@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "beca"
+  "defaultProject": "beca",
+  "cli": {
+    "analytics": false
+  }
 }
