@@ -1,0 +1,39 @@
+div {
+    display: flex;
+    margin: 0;
+    margin:0;
+    width:100%;
+}
+
+ul {
+    display: flex;     
+    list-style: none; 
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    background-color: teal;
+}
+
+li{
+    margin: 13px;
+}
+
+.botonloginLogut {
+    margin-left: auto
+}
+
+a {
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    vertical-align: middle;
+    transition: 0.7s;
+}
+
+a:hover{
+    background-color: rgb(43, 163, 163);
+    font-weight: 500;
+}

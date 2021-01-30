@@ -1,15 +1,13 @@
-<p>Login</p>
 
-<div>
-    <label>Usuario:</label>
-    <input type="text" [(ngModel)]="username">
-</div>
+    <div class="contenedor-login">
+        <h1>Login</h1>        
+        <form>
+                <label>Usuario:</label>
+                <input type="text" [(ngModel)]="username">
 
-<div>
-    <label>Contraseña:</label>
-    <input type="password" [(ngModel)]="password">
-</div>
+                <label>Contraseña:</label>
+                <input type="password" [(ngModel)]="password">
 
-<div>
-    <input type="button" (click)="login()" value="Ingresar">
-</div>
+                <input class="boton" type="button" (click)="login()" value="Ingresar">
+        </form>
+    </div>

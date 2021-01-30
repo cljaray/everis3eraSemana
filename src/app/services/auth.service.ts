@@ -14,17 +14,20 @@ export class AuthService {
 
   session = new Session;
 
+  isAuthChecker: boolean;
   
 
   constructor(private http: HttpClient, private storage: StorageService, private router: Router) { }
 
   login(username: string, password: string ){
-    this.http.post(`${environment.urlUserBase}/login`, {username, password}).subscribe((respuesta: any) => {
+    
+    this.http.post(`${environment.urlUserBase}/login`, {username, password}).subscribe(
+      (respuesta: any) => {
       if(respuesta){
         this.session.token = respuesta.token
         this.session.username = respuesta.user.username
         this.storage.setCurrentSession(this.session)
-  
+        this.isAuthChecker = true;        
         return this.router.navigate(['/ingresar'])
       }
 
@@ -37,7 +40,7 @@ export class AuthService {
 
   isAuth(): boolean{
     if(this.storage.getCurrentSession() !== null){
-      
+      this.isAuthChecker = true;
       return true;
     }
     return false;
@@ -45,6 +48,7 @@ export class AuthService {
   }
 
   logout(){
+    this.isAuthChecker = false;
     this.storage.logout();
   }
 

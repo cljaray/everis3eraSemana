@@ -1,13 +1,26 @@
-<ul>
-    <li>
-        <a routerLink="ingresar">Ingresar Datos</a>
-    </li>
-    <li>
-        <a routerLink="actualizar">Actualizar Datos</a>
-    </li>
-    <li>
-        <a routerLink="buscar">Buscar Datos</a>
-    </li>
-</ul>
 
-<button (click)="logout()">Salir</button>
+    <ul>
+        <li>
+            <a routerLink="listaExamenes">Lista de Exámenes</a>
+        </li>
+        <li>
+            <a routerLink="ingresar">Ingresar Datos</a>
+        </li>
+        <li>
+            <a routerLink="actualizar">Actualizar Datos</a>
+        </li>
+        <li>
+            <a routerLink="buscar">Buscar Datos</a>
+        </li>
+        
+        <ng-container *ngIf="isAuth">
+            <li class="botonloginLogut">
+                <a (click)="logout()" >Salir</a>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="!isAuth">
+            <li class="botonloginLogut">
+                <a routerLink="login">Login</a>
+            </li>
+        </ng-container>
+    </ul>

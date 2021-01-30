@@ -1,6 +1,11 @@
 <h2>Buscar Por rut</h2>
-<app-buscar-rut></app-buscar-rut>
+<!-- <app-buscar-rut></app-buscar-rut> -->
+<div class="input-group">
+    <label>Ingresa Rut</label>
+    <input type="text" [(ngModel)] = "inputBuscarRut">    
+</div>
 
+<button (click)="buscarRut()">Buscar</button>
 <h2>Actulizar Campos</h2>
 
 <app-forma-pcr></app-forma-pcr>

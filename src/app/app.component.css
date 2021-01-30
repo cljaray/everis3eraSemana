@@ -1,9 +1,6 @@
-.header { grid-area: header; }
+/* .header { grid-area: header; }
 .menu { grid-area: menu; }
-.main { grid-area: main; 
-     font-family: 'Open Sans', 'sans-serif';
-       background-color: #fff;
-     color: #444;}
+.main { grid-area: main; }
 .right { grid-area: right; }
 .footer { grid-area: footer; }
 
@@ -25,4 +22,4 @@
   padding: 10px;
   font-size: 150%;
   margin-bottom: 10px;
-}
+} */

@@ -1,60 +1,61 @@
 <h2>Datos examen pcr</h2>
 <div>
     <label>Nombre</label>
-    <input type="text" [(ngModel)]="pcr.nombre" (change)="addToPcrService($event)" name="nombre">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.nombre" name="nombre">   
+    {{datosFormaService.pcr.nombre}} 
 </div>
 <div>
     <label>Apellido</label>
-    <input type="text" [(ngModel)]="pcr.apellido" (change)="addToPcrService($event)" name="apellido">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.apellido" (change)="addToPcrService($event)" name="apellido">    
 </div>
 <div>
     <label>Rut</label>
-    <input type="text" [(ngModel)]="pcr.rut" (change)="addToPcrService($event)" name="rut">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.rut" (change)="addToPcrService($event)" name="rut">    
 </div>
 <div>
     <label>Edad</label>
-    <input type="number" [(ngModel)]="pcr.edad" (change)="addToPcrService($event)" name="edad">    
+    <input type="number" [(ngModel)]="datosFormaService.pcr.edad" (change)="addToPcrService($event)" name="edad">    
 </div>
 <div>
     <label>Direccion de vivienda</label>
-    <input type="text" [(ngModel)]="pcr.direccion" (change)="addToPcrService($event)" name="direccion">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.direccion" (change)="addToPcrService($event)" name="direccion">    
 </div>
 <div>
     <label>Numero de Telefono</label>
-    <input type="number" [(ngModel)]="pcr.numeroTelefono" (change)="addToPcrService($event)" name="numeroTelefono">    
+    <input type="number" [(ngModel)]="datosFormaService.pcr.numeroTelefono" (change)="addToPcrService($event)" name="numeroTelefono">    
 </div>
 <div>
     <label>Numero de Telefono de Emergencia</label>
-    <input type="number" [(ngModel)]="pcr.numeroEmergencia" (change)="addToPcrService($event)" name="numeroEmergencia">     
+    <input type="number" [(ngModel)]="datosFormaService.pcr.numeroEmergencia" (change)="addToPcrService($event)" name="numeroEmergencia">     
 </div>
 <div>
     <label>Villa o Poblacion</label>
-    <input type="text" [(ngModel)]="pcr.residencia" (change)="addToPcrService($event)" name="residencia">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.residencia" (change)="addToPcrService($event)" name="residencia">    
 </div>
 <div>
     <label>Hora de Examen</label>
-    <input type="text" [(ngModel)]="pcr.hora" (change)="addToPcrService($event)" name="hora">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.hora" (change)="addToPcrService($event)" name="hora">    
 </div>
 <div>
     <label>Lugar de toma de Examen</label>
-    <input type="text" [(ngModel)]="pcr.locacion" (change)="addToPcrService($event)" name="locacion">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.locacion" (change)="addToPcrService($event)" name="locacion">    
 </div>
 <div>
     <label>Comuna de residencia</label>
-    <input type="text" [(ngModel)]="pcr.comunaDeResidencia" (change)="addToPcrService($event)" name="comunaDeResidencia">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.comunaDeResidencia" (change)="addToPcrService($event)" name="comunaDeResidencia">    
 </div>
 <div>
     <label>Alto Riesgo
-         <input class="checkbox" type="checkbox" [(ngModel)]="pcr.altoRiesgo"  name="altoRiesgo">    
+        <input class="checkbox" type="checkbox" [(ngModel)]="datosFormaService.pcr.altoRiesgo">    
     </label>
 </div>
 <div>
     <label>Correo</label>
-    <input type="text" [(ngModel)]="pcr.correo" (change)="addToPcrService($event)" name="correo">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.correo" (change)="addToPcrService($event)" name="correo">    
 </div>
 <div>
     <label>Confirmacion Correo</label>
-    <input type="text" [(ngModel)]="pcr.confirmacionCorreo" (change)="addToPcrService($event)" name="confirmacionCorreo">    
+    <input type="text" [(ngModel)]="datosFormaService.pcr.confirmacionCorreo" (change)="addToPcrService($event)" name="confirmacionCorreo">    
 </div>
 
 

@@ -11,14 +11,12 @@ import { ServicioPCRService } from '../services/servicio-pcr.service';
 export class FormaPCRComponent implements OnInit {
 
   pcr = new Pcr();
-
-  inputBuscarRut: string;
-
-  todosLosPCR: Pcr[];
-
-  constructor(private servicioPCR: ServicioPCRService, private datosFormaService: DatosFormaService) { }
-
   
+  inputBuscarRut: string;
+  
+  todosLosPCR: Pcr[];
+  
+  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService) { }
 
   ngOnInit(): void {
   }
@@ -27,19 +25,8 @@ export class FormaPCRComponent implements OnInit {
     this.datosFormaService.setDatosPCR(event);
   }
 
-  
-  guardarOActualizar(){
-    this.servicioPCR.buscarPorRut(this.pcr.rut).subscribe(respuesta => {
-      if(respuesta !== null){        
-        return this.actualizar()
-      }
-      return false
-    })
-   
-  }
-
   actualizar(){
-    return this.servicioPCR.actualizar(this.pcr.rut, this.pcr).subscribe(respuesta => {
+    return this.servicioPCR.actualizar(this.datosFormaService.pcr.rut, this.datosFormaService.pcr).subscribe(respuesta => {
       console.log(respuesta)
     }, error =>{
       console.log(error)

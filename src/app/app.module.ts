@@ -16,6 +16,8 @@ import { GuardarPCRComponent } from './guardar-pcr/guardar-pcr.component';
 import { ActualizarPcrComponent } from './actualizar-pcr/actualizar-pcr.component';
 import { BuscarRutComponent } from './buscar-rut/buscar-rut.component';
 import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.component';
+import { AuthService } from './services/auth.service';
+import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.
     GuardarPCRComponent,
     ActualizarPcrComponent,
     BuscarRutComponent,
-    MostrarTodosPcrComponent
+    MostrarTodosPcrComponent,
+    BienvenidaComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

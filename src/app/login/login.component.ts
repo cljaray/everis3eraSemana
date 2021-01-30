@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit,  } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,13 +11,16 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private auth: AuthService) { }
+  constructor(private autorizacion: AuthService) { }
 
   ngOnInit(): void {
+    /* agregar isAuth y navigate */
   }
 
   login(){
-    this.auth.login(this.username, this.password)
+    this.autorizacion.login(this.username, this.password)    
   }
+
+
 
 }

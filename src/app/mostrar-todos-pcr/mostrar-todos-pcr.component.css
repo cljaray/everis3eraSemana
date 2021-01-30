@@ -1,0 +1,31 @@
+ul {
+    list-style: none;
+}
+
+ul >li {
+    background-color: #BEBEBE;
+    color: Black;
+    width: 100%;
+    padding: 20px;
+    transition: 0,2s;
+}
+
+ul > li:nth-of-type(odd) {
+    background-color: gray;
+    transition: 0,2s;
+}
+
+ul >li:hover {
+    background-color: #a5a5a1;
+
+}
+
+ul > li:hover:nth-of-type(odd) {
+    background-color: rgb(111, 111, 112);
+}
+
+
+a {
+    text-decoration: none;
+}
+

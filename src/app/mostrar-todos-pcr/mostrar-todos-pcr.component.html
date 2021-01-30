@@ -1,6 +1,8 @@
 <h2>Todos los PCR</h2>
 
 
-    <div *ngFor="let pcr of todosLosPcr">
-        <p> {{ pcr | json }} </p>
-    </div>
+    <ul>
+        <li *ngFor="let pcr of todosLosPcr">
+            <a routerLink="/ingresar"> {{ pcr.nombre}} {{ pcr.apellido }} - {{ pcr.rut }} </a>
+        </li>
+    </ul>
