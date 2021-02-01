@@ -10,8 +10,10 @@ import { ServicioPCRService } from '../services/servicio-pcr.service';
 export class MostrarTodosPcrComponent implements OnInit {
 
   todosLosPcr: Pcr[];
+  busquedaRut: string;
 
   constructor(private servicioPCR: ServicioPCRService) { }
+
 
   ngOnInit(): void {
     this.buscar();
@@ -19,11 +21,23 @@ export class MostrarTodosPcrComponent implements OnInit {
 
   buscar(){
     this.servicioPCR.buscar().subscribe(respuesta => {
+      console.log(this.busquedaRut)
       console.log(respuesta);
       this.todosLosPcr = respuesta;
     }, error => {
       console.log(error);
     })
   }
+
+  buscarPorRut(){
+    this.servicioPCR.buscarPorRut(this.busquedaRut).subscribe(rut => {
+      console.log(rut)
+      this.todosLosPcr = rut
+    }, error => {
+      console.log(error)
+    })
+  }
+
+
 
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Pcr } from '../models/Pcr';
 import { DatosFormaService } from '../services/datos-forma.service';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
@@ -33,7 +34,16 @@ export class FormaPCRComponent implements OnInit {
     })
   }
 
-  
+  log(value){
+    console.log(value)
+  }
 
+  validacionForma(form){
+    console.log(form)
+    if(form.invalid){
+      return alert("porfavor rellena los campos")
+    }
+
+  }
   
 }

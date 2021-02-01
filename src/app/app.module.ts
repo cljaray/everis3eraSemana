@@ -18,6 +18,7 @@ import { BuscarRutComponent } from './buscar-rut/buscar-rut.component';
 import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.component';
 import { AuthService } from './services/auth.service';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
+import { InformacionExamenComponent } from './informacion-examen/informacion-examen.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BienvenidaComponent } from './bienvenida/bienvenida.component';
     ActualizarPcrComponent,
     BuscarRutComponent,
     MostrarTodosPcrComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    InformacionExamenComponent
   ],
   imports: [
     BrowserModule,

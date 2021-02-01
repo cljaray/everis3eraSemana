@@ -5,6 +5,7 @@ import { AuthGuard } from './auth.guard';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { FormaPCRComponent } from './forma-pcr/forma-pcr.component';
 import { GuardarPCRComponent } from './guardar-pcr/guardar-pcr.component';
+import { InformacionExamenComponent } from './informacion-examen/informacion-examen.component';
 import { IngresarComponent } from './ingresar/ingresar.component';
 import { LoginComponent } from './login/login.component';
 import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:"ingresar", component: GuardarPCRComponent , canActivate: [AuthGuard] },
   { path:"actualizar", component: ActualizarPcrComponent , canActivate: [AuthGuard] },
   { path:"buscar", component: MostrarTodosPcrComponent , canActivate: [AuthGuard] },
+  { path:"informacion/:rut", component: InformacionExamenComponent, canActivate: [AuthGuard] },
 
 ];
 

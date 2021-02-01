@@ -9,6 +9,8 @@ import { Pcr } from '../models/Pcr';
 })
 export class ServicioPCRService {
 
+  currentPCR: Pcr;
+
   constructor(private http: HttpClient) { }
 
   buscar(): Observable<any> {

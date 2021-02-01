@@ -14,12 +14,11 @@ body, html {
     padding: 0;
     margin: 0;
     justify-content: center;
-    align-items: center;
     height: 94%;
     background-color: #F6F4F5;
     flex-wrap: wrap;
 }
-
+/* 
 input[type="text"], input[type="number"], input[type="password"] {
     display: block;
     padding: 7px 16px;
@@ -40,7 +39,7 @@ input[type="text"], input[type="number"], input[type="password"] {
     display: flex;
     justify-content: space-between;
     margin: 10px;
-}
+} */
 
 .boton {
     background-color: teal; 
