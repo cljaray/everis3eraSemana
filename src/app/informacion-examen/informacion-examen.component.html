@@ -1,4 +1,52 @@
-<p>informacion-examen works!</p>
-{{ pcrService.currentPCR | json }}
 
-<button class="btn btn-primary">Editar</button>
+<h1 class="text-center mt-3">Informacion Exámen</h1>
+
+<ng-container *ngIf="pcrService.currentPCR else mensaje">
+    <div class="container justify-content-center text-center my-4 pb-5">
+        <p>
+            <strong> Nombre:</strong> {{ pcrService.currentPCR.nombre }}
+        </p>
+        <p>
+            <strong> Apellido:</strong> {{ pcrService.currentPCR.apellido }}
+        </p>
+        <p>
+            <strong> Rut:</strong> {{ pcrService.currentPCR.rut }}
+        </p>
+        <p>
+            <strong> Edad:</strong> {{ pcrService.currentPCR.edad }}
+        </p>
+        <p>
+            <strong> Numero de Telefono: </strong>{{ pcrService.currentPCR.numeroTelefono }}
+        </p>
+        <p>
+            <strong> Numero de emergencia: </strong>{{ pcrService.currentPCR.numeroEmergencia }}
+        </p>
+        <p>
+            <strong> Direccion de residencia:</strong> {{ pcrService.currentPCR.direccion }}
+        </p>
+        <p>
+            <strong> Comuna de residencia:</strong> {{ pcrService.currentPCR.comunaDeResidencia }}
+        </p>
+        <p>
+            <strong> Villa o Población: </strong>{{ pcrService.currentPCR.residencia }}
+        </p>
+        <p>
+            <strong> Paciente de Alto Riesgo:</strong> {{ pcrService.currentPCR.altoRiesgo }}
+        </p>
+        <p>
+            <strong> Hora de exámen:</strong> {{ pcrService.currentPCR.hora }}
+        </p>
+        <p>
+            <strong> Lugar de exámen:</strong> {{ pcrService.currentPCR.locacion }}
+        </p>
+        <p>
+            <strong> Correo:</strong> {{ pcrService.currentPCR.correo }}
+        </p>
+        <button class="btn btn-success">Actualizar</button>
+    </div>  
+
+</ng-container>
+
+<ng-template #mensaje>
+    <h1 class="text-center">Cargando...</h1>
+</ng-template>

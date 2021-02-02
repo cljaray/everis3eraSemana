@@ -19,6 +19,7 @@ import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.
 import { AuthService } from './services/auth.service';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { InformacionExamenComponent } from './informacion-examen/informacion-examen.component';
+import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InformacionExamenComponent } from './informacion-examen/informacion-exa
     BuscarRutComponent,
     MostrarTodosPcrComponent,
     BienvenidaComponent,
-    InformacionExamenComponent
+    InformacionExamenComponent,
+    BusquedaAvanzadaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,17 @@
-<h2>Buscar Por rut</h2>
+<h1 class="mt-3 text-center">Actualizar datos</h1>
 <!-- <app-buscar-rut></app-buscar-rut> -->
-<div class="input-group">
-    <label>Ingresa Rut</label>
-    <input type="text" [(ngModel)] = "inputBuscarRut">    
-</div>
-
-<button (click)="buscarRut()">Buscar</button>
-<h2>Actulizar Campos</h2>
+<form>
+    <div class="form-row justify-content-center">
+        <div class="form-group col-6">
+        <label for="buscarRut">Buscar por rut:</label>
+        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut">
+        <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guion (11.111.111-1)</small>
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <input type="button" class="btn btn-primary text-center"value="Buscar">
+    </div>
+</form>
 
 <app-forma-pcr></app-forma-pcr>
 
-<button (click)="actualizar()">Actualizar</button>

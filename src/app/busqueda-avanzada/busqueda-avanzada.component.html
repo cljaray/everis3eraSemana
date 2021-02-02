@@ -1,0 +1,52 @@
+<h1 class="mt-3 text-center">Busqueda Avanzada</h1>
+<!-- <app-buscar-rut></app-buscar-rut> -->
+<form>
+    <div class="form-row justify-content-center">
+        <div class="form-group col-6">
+        <label for="buscarRut">Buscar por rut:</label>
+        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut">
+        <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guion (11.111.111-1)</small>
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="form-column col-3">
+            <div class="form-check form-check">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Buscar por Nombre o Apellido</label>
+              </div>
+              <div class="form-check form-check">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Buscar por Comuna</label>
+              </div>
+              <div class="form-check form-check">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio3">Ver resultados positivos</label>
+              </div>
+        </div>
+        <div class="form-column col-3">
+            <div class="form-check form-check">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+              <label class="form-check-label" for="inlineRadio3">Ver resultados negativos</label>
+            </div>
+            <div class="form-check form-check">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+              <label class="form-check-label" for="inlineRadio3">Ver resultados pendientes</label>
+            </div>
+            <div class="form-check form-check">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+              <label class="form-check-label" for="inlineRadio3">Ver pacientes de Alto riesgo</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-row justify-content-center mt-3">
+        <input type="button" class="btn btn-primary text-center" value="Buscar">
+    </div>
+</form>
+
+<div class="row justify-content-center">
+    <div class="col-6" >
+        <div class="list-group mt-5">
+            <a class="list-group-item list-group-item-action text-center" *ngFor="let pcr of todosLosPcr" routerLink="/informacion/{{pcr.rut}}"> {{ pcr.nombre }} {{ pcr.apellido }} Rut: {{ pcr.rut }} - Resultado:{{ pcr.resultado}} </a>
+        </div>
+    </div>
+</div>

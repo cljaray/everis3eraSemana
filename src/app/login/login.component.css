@@ -19,12 +19,19 @@
 }
 
 form {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: #BEBEBE; 
 }
 
 label {
     align-self: flex-start;
+}
+
+button {
+    background-color: teal;
+    border-color: teal;
+}
+
+button:hover{
+    background-color: teal;
+    border-color: teal;
 }
