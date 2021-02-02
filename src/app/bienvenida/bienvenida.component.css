@@ -2,17 +2,24 @@
     align-self: flex-start;
     padding: 30px;
     margin: 0;
-    background-image: url("../../assets/User_icon_BLACK-01.png");
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 100px;
 }
 
 h1 {
-    text-align: center;
+    margin-top: 2.5%;
+    text-align: left;
 }
 
-p + p {
-    margin-top:80px;
+p+p {
+    margin-top: 80px;
 }
 
+.container {
+    margin-left: 5%;
+}
+
+.content {
+    margin-top: 5.5%;
+}

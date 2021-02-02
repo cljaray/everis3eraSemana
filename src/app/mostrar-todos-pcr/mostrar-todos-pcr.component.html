@@ -13,7 +13,7 @@
 </form>
 
     <div class="row justify-content-center">
-        <div class="col-6" >
+        <div class="col-10 col-sm-10 col-md-8 col-lg-6">
             <div class="list-group mt-5">
                 <a class="list-group-item list-group-item-action text-center" *ngFor="let pcr of todosLosPcr" routerLink="/informacion/{{pcr.rut}}"> {{ pcr.nombre }} {{ pcr.apellido }} Rut: {{ pcr.rut }} - Resultado:{{ pcr.resultado}} </a>
             </div>
