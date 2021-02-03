@@ -8,7 +8,7 @@ export class Pcr {
     direccion:string;
     edad:number;
     hora:string;
-    locacion:string;
+    lugarTomaExamen:string;
     nombre:string;
     fechaExamen:Date;
     telefonoSecundario:number;
