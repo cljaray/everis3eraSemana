@@ -15,6 +15,11 @@ export class AuthService {
   session = new Session;
 
   isAuthChecker: boolean;
+
+  loggedInObservable: Observable<any>;
+
+  
+
   
 
   constructor(private http: HttpClient, private storage: StorageService, private router: Router) { }
@@ -50,6 +55,16 @@ export class AuthService {
   logout(){
     this.isAuthChecker = false;
     this.storage.logout();
+  }
+
+
+  isAuthObserver(navigation){
+    this.loggedInObservable = new Observable( observer => {
+        if(navigation && this.isAuth()){
+          return observer.next(true)
+        }
+        observer.next(false)
+    })
   }
 
 }

@@ -25,13 +25,3 @@ form {
 label {
     align-self: flex-start;
 }
-
-button {
-    background-color: teal;
-    border-color: teal;
-}
-
-button:hover{
-    background-color: teal;
-    border-color: teal;
-}

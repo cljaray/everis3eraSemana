@@ -12,4 +12,7 @@ export class BienvenidaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar(){
+    console.log("guardar desde modal")
+  }
 }

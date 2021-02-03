@@ -1,13 +1,21 @@
-<div class="container">
-    <h1>Sistema de gestión de pacientes Covid-19</h1>
-
-    <div class="content">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sint necessitatibus iusto ullam veniam voluptate dolorum deleniti accusantium, eligendi, possimus velit dolore explicabo ipsam qui doloremque est adipisci accusamus non. Beatae
-            eos asperiores soluta quos, et non odio expedita totam iste eveniet, provident voluptas, maiores ea esse perferendis pariatur dicta quisquam laudantium numquam illum nihil repellat modi laborum tempore. Tempora. Iste iusto explicabo repudiandae
-            exercitationem, accusantium esse reprehenderit hic, vitae tenetur consectetur, commodi perspiciatis. Perferendis velit ratione veritatis libero, consequatur, labore ullam, vel repellat perspiciatis architecto dolorum unde non itaque.</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam officia architecto sed vitae exercitationem pariatur quas a ccusamus. In dolorum ut similique repellat numquam a, tenetur, laboriosam assumenda sunt cupiditate est.Quod, saepe non commodi
-            repudiandae dignissimos illo labore, eos officia, distinctio corporis odit quibusdam quae quaerat! Culpa, nihil nam nostrum voluptate, ipsa ab laborum perspiciatis officia hic similique libero. Consequuntur.</p>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Estas seguro que deseas eliminar este exámen ? Esta acción es permanente
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="guardar()">Borrar</button>
+        </div>
+      </div>
     </div>
-
-</div>
+  </div>

@@ -11,9 +11,10 @@ export class Pcr {
     locacion:string;
     nombre:string;
     fechaExamen:Date;
-    numeroEmergencia:number;
-    numeroTelefono:number;
-    residencia:string;
+    telefonoSecundario:number;
+    telefono:number;
+    villaPoblacion:string;
     resultado:string;
     rut:string;
+
 }
