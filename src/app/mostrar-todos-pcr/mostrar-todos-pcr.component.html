@@ -3,7 +3,8 @@
     <div class="form-row justify-content-center">
         <div class="form-group col-6">
         <label for="buscarRut">Buscar por rut:</label>
-        <input [(ngModel)]="busquedaRut" name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut">
+        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut"
+        [(ngModel)]="busquedaRut" (ngModelChange)="resetearLista($event)">
         <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
         </div>
     </div>
@@ -15,7 +16,10 @@
     <div class="row justify-content-center">
         <div class="col-10 col-sm-10 col-md-8 col-lg-6">
             <div class="list-group mt-5">
-                <a class="list-group-item list-group-item-action text-center" *ngFor="let pcr of todosLosPcr" routerLink="/informacion/{{pcr.rut}}"> Nombre: {{ pcr.nombre }} {{ pcr.apellido }} - Rut: {{ pcr.rut }} - Resultado:{{ pcr.resultado }} </a>
+                <p *ngIf="todosLosPcr && todosLosPcr.length === 0" class="text-center align-self-center">No hay resultados</p> 
+                <ng-container *ngFor="let pcr of todosLosPcr" >
+                    <a class="list-group-item list-group-item-action text-center"  routerLink="/informacion/{{pcr.rut}}"> Nombre: {{ pcr.nombre }} {{ pcr.apellido }} - Rut: {{ pcr.rut }} - Resultado:{{ pcr.resultado }} </a>
+                </ng-container>
             </div>
         </div>
     </div>

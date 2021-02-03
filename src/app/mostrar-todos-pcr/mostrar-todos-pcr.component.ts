@@ -31,11 +31,28 @@ export class MostrarTodosPcrComponent implements OnInit {
 
   buscarPorRut(){
     this.servicioPCR.buscarPorRut(this.busquedaRut).subscribe(rut => {
-      console.log(rut)
-      this.todosLosPcr = rut
+
+      const nuevaListaPCR = [];
+
+      if(rut){
+        nuevaListaPCR.push(rut);
+  
+        return this.todosLosPcr = nuevaListaPCR;
+
+      }
+
+      this.todosLosPcr = nuevaListaPCR;
+
     }, error => {
       console.log(error)
     })
+  }
+
+  resetearLista(event){
+    console.log(event)
+    if(event.length === 0){
+      this.buscar();
+    }
   }
 
 

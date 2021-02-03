@@ -1,26 +1,28 @@
 
     <ul>
-        <li>
-            <a routerLink="listaExamenes">Lista de Exámenes</a>
-        </li>
-        <li>
-            <a routerLink="ingresar">Ingresar Datos</a>
-        </li>
-        <li>
-            <a routerLink="actualizar">Actualizar Datos</a>
-        </li>
-        <li>
-            <a routerLink="buscar">Buscar Datos</a>
-        </li>
+        <ng-container *ngIf="auth.isAuthChecker">
+            <li>
+                <a routerLink="listaExamenes">Lista de Exámenes</a>
+            </li>
+            <li>
+                <a routerLink="ingresar">Ingresar Datos</a>
+            </li>
+            <li>
+                <a routerLink="actualizar">Actualizar Datos</a>
+            </li>
+            <li>
+                <a routerLink="buscar">Buscar Datos</a>
+            </li>
+        </ng-container>
         
-        <ng-container *ngIf="isAuth">
+        <li *ngIf="auth.isAuthChecker else login" class="botonloginLogut">
+            <a (click)="logout()" >Cerrar Sesión</a>
+        </li>
+
+        <ng-template #login>
             <li class="botonloginLogut">
-                <a (click)="logout()" >Salir</a>
+                <a routerLink="/">Login</a>
             </li>
-        </ng-container>
-        <ng-container *ngIf="!isAuth">
-            <li class="botonloginLogut">
-                <a routerLink="login">Login</a>
-            </li>
-        </ng-container>
+        </ng-template>
+
     </ul>

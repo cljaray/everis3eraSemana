@@ -26,6 +26,22 @@ export class ServicioPCRService {
     return this.http.get(`${environment.urlPcrBase}/pcr/buscarPorRut`, { params : parametros })
   }
 
+  buscarPorComuna(comuna: string): Observable<any>{
+    const parametros = new HttpParams().set("comuna", comuna);
+    return this.http.get(`${environment.urlPcrBase}/pcr/buscarPorComuna`, { params : parametros })
+  }
+
+  buscarPorResultado(resultado: string): Observable<any>{
+    const parametros = new HttpParams().set("resultado", resultado);
+    return this.http.get(`${environment.urlPcrBase}/pcr/checkearResultado`, { params : parametros })
+  }
+  
+  pacientesAltoRiesgo(): Observable<any>{
+    return this.http.get(`${environment.urlPcrBase}/pcr/pacientesAltoRiesgo`)
+  }
+  
+
+
   actualizar(rut: string, pcr: Pcr): Observable<any> {
     const parametros = new HttpParams().set("rut", rut);
     return this.http.put(`${environment.urlPcrBase}/pcr/actualizarPCR/${rut}`, pcr)

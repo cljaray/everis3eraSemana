@@ -1,55 +1,78 @@
 <!-- <app-buscar-rut></app-buscar-rut> -->
+<h1 class="text-center mt-4">Búsqueda avanzada</h1>
 <form>
-    <div class="form-row justify-content-center pt-5">
+    <div class="form-row justify-content-center pt-2">
+
+      <ng-container *ngIf="mostrarBusqueda">
         <div class="form-group col-6">
-        <label for="buscarRut">Ingresar Búsqueda:</label>
-        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut">
-        <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
+          <label for="buscarRut">Ingresar Búsqueda:</label>
+          <input name="busquedaRut" type="text" class="form-control" 
+          id="buscarRut" aria-describedby="rut" placeholder="{{nombreBusqueda === 'Nombre' ? 'Nombre o apellido' : nombreBusqueda }}"
+          [(ngModel)]="busqueda"> {{busqueda}}
+          <small id="rut" class="form-text text-muted" *ngIf=" filtroBusqueda === 'rut' ">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
         </div>
+      </ng-container>
+
+
     </div>
     <div class="form-row justify-content-center">
         <div class="form-column col-3">
             <div class="form-check form-check">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="rut">
+                <input class="form-check-input" type="radio" name="filtro" id="filtro" value="rut" data-nombre="Rut" (click)="setFiltroBusqueda($event)" checked>
                 <label class="form-check-label" for="inlineRadio1">Buscar por rut</label>
               </div>
             <div class="form-check form-check">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="nombre">
+                <input class="form-check-input" type="radio" name="filtro" id="filtro" value="nombre" data-nombre="Nombre" (click)="setFiltroBusqueda($event)">
                 <label class="form-check-label" for="inlineRadio1">Buscar por nombre o apellido</label>
               </div>
               <div class="form-check form-check">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="comuna">
-                <label class="form-check-label" for="inlineRadio2">Buscar por comuna</label>
+                <input class="form-check-input" type="radio" name="filtro" id="comuna" value="comuna" data-nombre="Comuna" (click)="setFiltroBusqueda($event) ">
+                <label class="form-check-label" for="comuna">Buscar por comuna</label>
               </div>
               <div class="form-check form-check">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="resultado">
+                <input class="form-check-input" type="radio" name="filtro" id="filtro" value="resultado" data-nombre="Resultado" data-resultado="positivo" (click)="buscarPorResultado($event)" >
                 <label class="form-check-label" for="inlineRadio3">Ver resultados positivos</label>
               </div>
         </div>
         <div class="form-column col-3">
             <div class="form-check form-check">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="resultado">
+              <input class="form-check-input" type="radio" name="filtro" id="filtro" value="resultado" data-nombre="Resultado"  data-resultado="negativo"(click)="buscarPorResultado($event)">
               <label class="form-check-label" for="inlineRadio3">Ver resultados negativos</label>
             </div>
             <div class="form-check form-check">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="resultado">
+              <input class="form-check-input" type="radio" name="filtro" id="filtro" value="resultado" data-nombre="Resultado" data-resultado="pendiente" (click)="buscarPorResultado($event)">
               <label class="form-check-label" for="inlineRadio3">Ver resultados pendientes</label>
             </div>
             <div class="form-check form-check">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="altoRiesgo">
+              <input class="form-check-input" type="radio" name="filtro" id="filtro" value="altoRiesgo" data-nombre="Paciente de alto riesgo" (click)="setFiltroBusqueda($event)">
               <label class="form-check-label" for="inlineRadio3">Ver pacientes de alto riesgo</label>
             </div>
         </div>
     </div>
     <div class="form-row justify-content-center mt-3">
-        <input type="button" class="btn btn-success text-center" value="Buscar">
+        <input type="button" class="btn btn-success text-center" (click)="configMetodos[filtroMetodos]()" value="Buscar">
     </div>
 </form>
 
 <div class="row justify-content-center">
     <div class="col-6" >
         <div class="list-group mt-5">
-            <a class="list-group-item list-group-item-action text-center" *ngFor="let pcr of todosLosPcr" routerLink="/informacion/{{pcr.rut}}"> Nombre: {{ pcr.nombre }} {{ pcr.apellido }} - Rut: {{ pcr.rut }} - Resultado:{{ pcr.resultado}} </a>
+          <p *ngIf="todosLosPcr && todosLosPcr.length === 0" class="text-center align-self-center">No hay resultados</p> 
+            <ng-container *ngFor="let pcr of todosLosPcr">             
+
+              <a class="list-group-item list-group-item-action text-center" 
+              *ngIf="filtroBusqueda === 'nombre' else contenedorFiltro"  
+              routerLink="/informacion/{{pcr.rut}}"> 
+              Nombre: {{ pcr.nombre }} {{ pcr.apellido }}
+            </a>
+
+            <ng-template #contenedorFiltro>
+              <a class="list-group-item list-group-item-action text-center" 
+              routerLink="/informacion/{{pcr.rut}}"> 
+              Nombre: {{ pcr.nombre }} {{ pcr.apellido }} - {{nombreBusqueda + ": " + pcr[filtroBusqueda] }} </a>
+            </ng-template>
+
+            </ng-container>
         </div>
     </div>
 </div>

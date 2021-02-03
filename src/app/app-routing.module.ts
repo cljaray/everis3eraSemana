@@ -12,8 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.component';
 
 const routes: Routes = [
-  { path: "", component: BienvenidaComponent},
-  { path:"login", component: LoginComponent },
+  { path:"", component: LoginComponent },
   { path:"listaExamenes", component: MostrarTodosPcrComponent},
   { path:"ingresar", component: GuardarPCRComponent , canActivate: [AuthGuard] },
   { path:"actualizar", component: ActualizarPcrComponent , canActivate: [AuthGuard] },

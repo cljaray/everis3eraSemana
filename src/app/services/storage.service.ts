@@ -22,7 +22,7 @@ export class StorageService {
   logout() {
     localStorage.removeItem("currentUser");
     this.session.removeSession()
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 }

@@ -21,10 +21,11 @@ li{
 }
 
 .botonloginLogut {
-    margin-left: auto
+    margin-left: auto;
+    color: white;
 }
 
-a {
+li > a {
     margin: 10px;
     padding: 10px;
     text-decoration: none;

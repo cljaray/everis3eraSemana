@@ -8,10 +8,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
-  isAuth= this.auth.isAuthChecker;
   
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
   
   
   ngOnInit(): void {    
