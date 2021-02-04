@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormaPCRComponent } from '../forma-pcr/forma-pcr.component';
 import { Pcr } from '../models/Pcr';
 import { DatosFormaService } from '../services/datos-forma.service';
@@ -15,7 +16,7 @@ export class GuardarPCRComponent implements AfterViewInit {
   pcr = new Pcr();
   nuevoPCR: Pcr;
 
-  constructor(private servicioPCR:ServicioPCRService, private datosFormaService: DatosFormaService) { }
+  constructor(private servicioPCR:ServicioPCRService, private datosFormaService: DatosFormaService, private router: Router) { }
 
   ngAfterViewInit(): void {
     this.datosPcr = this.datosPcr
@@ -27,10 +28,14 @@ export class GuardarPCRComponent implements AfterViewInit {
 
   guardar(){  
     this.servicioPCR.guardar(this.datosFormaService.pcr).subscribe(respuesta => {
-      this.nuevoPCR = respuesta;
+      if(respuesta){
+        this.nuevoPCR = respuesta;
+        this.router.navigate([`/informacion/${respuesta.rut}`]);
+      }
+      
     }, error => {
       console.log(error);
-    })
+  })
    
 } 
 

@@ -14,10 +14,11 @@
       </div>
       <div class="form-group col-md-4">
         <label>Paciente alto riesgo</label>
-        <select class="custom-select" placeholder="Selecciona...">
+        <select class="custom-select" placeholder="Selecciona..."
+        [(ngModel)]="datosFormaService.pcr.altoRiesgo" ngModel #altoRiesgo="ngModel" name="altoRiesgo" required>
             <option value="1" disabled selected>Selecciona...</option>
-            <option value="2">Si</option>
-            <option value="3">No</option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
         </select>
     </div> 
     </div>
@@ -34,11 +35,12 @@
       </div>   
       <div class="form-group col-md-4">
         <label>Resultado exámen</label>
-        <select class="custom-select">
+        <select class="custom-select" 
+        [(ngModel)]="datosFormaService.pcr.resultado" ngModel #resultado="ngModel" name="resultado" required>
             <option disabled selected>Selecciona...</option>
-            <option value="1">Pendiente</option>
-            <option value="2">Positivo</option>
-            <option value="3">Negativo</option>
+            <option value="pendiente">Pendiente</option >
+            <option value="positivo">Positivo</option>
+            <option value="negativo">Negativo</option>
         </select>
     </div>   
     </div>
