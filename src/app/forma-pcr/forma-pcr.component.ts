@@ -32,7 +32,11 @@ export class FormaPCRComponent implements OnInit {
 
     if(this.router.url === "/actualizar"){
       this.servicioPCR.getValuePCR().subscribe(pcr => {
-        this.pcr = pcr;
+        this.pcr.altoRiesgo = false;
+        this.pcr.resultado = "pendiente";
+        if(pcr){
+          this.pcr = pcr;
+        }
 
       })
     } else if(this.datosFormaService.pcr) {

@@ -13,6 +13,7 @@ export class BusquedaAvanzadaComponent implements OnInit {
   todosLosPcr: Pcr[];
   busqueda: string;
   mostrarBusqueda = true;
+  formaPCR;
   
   nombreBusqueda = "Rut";
   filtroBusqueda = "rut";
@@ -27,9 +28,9 @@ export class BusquedaAvanzadaComponent implements OnInit {
   }
 
   configMetodos = {
-    rut: () => this.buscarPorRut(),
+    rut: () => this.buscarPorRut(this.formaPCR),
     comuna: () => this.buscarPorComuna(),
-    nombre: () => this.buscarPorNombreApellido
+    nombre: () => this.buscarPorNombreApellido()
   }
 
 
@@ -50,24 +51,30 @@ export class BusquedaAvanzadaComponent implements OnInit {
     })
   }
 
-  buscarPorRut(){
-    this.servicioPCR.buscarPorRut(this.busqueda).subscribe(rut => {
-      console.log(rut);
-      const nuevaListaPCR = [];
-
-      if(rut){
+  buscarPorRut(forma){
+    console.log(forma);
+    if(forma.valid){
+      this.servicioPCR.buscarPorRut(this.busqueda).subscribe(rut => {
+        console.log(rut);
+        const nuevaListaPCR = [];
   
-        nuevaListaPCR.push(rut);  
-        return this.todosLosPcr = nuevaListaPCR;
+        if(rut){
+    
+          nuevaListaPCR.push(rut);  
+          return this.todosLosPcr = nuevaListaPCR;
+  
+        }
+  
+        this.todosLosPcr = nuevaListaPCR;
+        
+  
+      }, error => {
+        console.log(error)
+      })
 
-      }
-
-      this.todosLosPcr = nuevaListaPCR;
-      
-
-    }, error => {
-      console.log(error)
-    })
+    } else {
+      return alert("Porfavor ingresa un rut valido")
+    }
   }
 
   buscarPorComuna(){
@@ -80,7 +87,11 @@ export class BusquedaAvanzadaComponent implements OnInit {
   }
 
   buscarPorNombreApellido(){
-
+    this.servicioPCR.buscarPorNombreApellido(this.busqueda, this.busqueda).subscribe(respuesta => {
+      if(respuesta){
+        this.todosLosPcr = respuesta;
+      }
+    })
   }
 
   buscarPorResultado(evento){

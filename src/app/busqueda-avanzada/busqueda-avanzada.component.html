@@ -1,15 +1,25 @@
 <!-- <app-buscar-rut></app-buscar-rut> -->
 <h1 class="text-center mt-4">Búsqueda avanzada</h1>
-<form>
+<form #formaPCR="ngForm">
     <div class="form-row justify-content-center pt-2">
 
       <ng-container *ngIf="mostrarBusqueda">
         <div class="form-group col-6">
           <label for="buscarRut">Ingresar Búsqueda:</label>
-          <input name="busquedaRut" type="text" class="form-control" 
-          id="buscarRut" aria-describedby="rut" placeholder="{{nombreBusqueda === 'Nombre' ? 'Nombre o apellido' : nombreBusqueda }}"
-          [(ngModel)]="busqueda"> {{busqueda}}
-          <small id="rut" class="form-text text-muted" *ngIf=" filtroBusqueda === 'rut' ">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
+
+          <ng-container *ngIf=" filtroBusqueda === 'rut' else inputBusqueda" >
+            <input name="busquedaRut" type="text" class="form-control" 
+            id="buscarRut" aria-describedby="rut" placeholder="{{nombreBusqueda === 'Nombre' ? 'Nombre o apellido' : nombreBusqueda }}"
+            [(ngModel)]="busqueda" #rut="ngModel" pattern="^(\d{1}|\d{2})\.(\d{3}\.\d{3}-)([kK]{1}$|\d{1}$)" required> 
+            <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
+          </ng-container>
+
+          <ng-template #inputBusqueda>
+            <input name="busquedaRut" type="text" class="form-control" 
+            id="buscarRut" aria-describedby="rut" placeholder="{{nombreBusqueda === 'Nombre' ? 'Nombre o apellido' : nombreBusqueda }}"
+            [(ngModel)]="busqueda" required> 
+          </ng-template>
+
         </div>
       </ng-container>
 
@@ -50,7 +60,7 @@
         </div>
     </div>
     <div class="form-row justify-content-center mt-3">
-        <input type="button" class="btn btn-success text-center" (click)="configMetodos[filtroMetodos]()" value="Buscar">
+        <input type="button" class="btn btn-success text-center" (click)="filtroBusqueda === 'rut' ? buscarPorRut(formaPCR) : configMetodos[filtroMetodos]()" value="Buscar">
     </div>
 </form>
 

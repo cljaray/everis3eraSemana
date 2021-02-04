@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pcr } from '../models/Pcr';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
+import { ValidacionService } from '../services/validacion.service';
 
 @Component({
   selector: 'app-mostrar-todos-pcr',
@@ -12,7 +13,7 @@ export class MostrarTodosPcrComponent implements OnInit {
   todosLosPcr: Pcr[];
   busquedaRut: string;
 
-  constructor(private servicioPCR: ServicioPCRService) { }
+  constructor(private servicioPCR: ServicioPCRService, public validacion: ValidacionService) { }
 
 
   ngOnInit(): void {
@@ -29,23 +30,30 @@ export class MostrarTodosPcrComponent implements OnInit {
     })
   }
 
-  buscarPorRut(){
-    this.servicioPCR.buscarPorRut(this.busquedaRut).subscribe(rut => {
+  buscarPorRut(forma){
 
-      const nuevaListaPCR = [];
-
-      if(rut){
-        nuevaListaPCR.push(rut);
+    if(forma.valid){
+      this.servicioPCR.buscarPorRut(this.busquedaRut).subscribe(rut => {
   
-        return this.todosLosPcr = nuevaListaPCR;
+        const nuevaListaPCR = [];
+  
+        if(rut){
+          nuevaListaPCR.push(rut);
+    
+          return this.todosLosPcr = nuevaListaPCR;
+  
+        }
+  
+        this.todosLosPcr = nuevaListaPCR;
+  
+      }, error => {
+        console.log(error)
+      })
+    } else {
+      alert("Porfavor ingresa un rut valido");
+    }
+    
 
-      }
-
-      this.todosLosPcr = nuevaListaPCR;
-
-    }, error => {
-      console.log(error)
-    })
   }
 
   resetearLista(event){
@@ -54,7 +62,5 @@ export class MostrarTodosPcrComponent implements OnInit {
       this.buscar();
     }
   }
-
-
 
 }

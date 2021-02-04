@@ -1,15 +1,15 @@
 <h2 class="mt-3 text-center">Todos los PCR</h2>
-<form>
+<form #formaRut="ngForm">
     <div class="form-row justify-content-center">
         <div class="form-group col-6">
         <label for="buscarRut">Buscar por rut:</label>
         <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut"
-        [(ngModel)]="busquedaRut" (ngModelChange)="resetearLista($event)">
+        [(ngModel)]="busquedaRut" (ngModelChange)="resetearLista($event)" #rut="ngModel" pattern="^(\d{1}|\d{2})\.(\d{3}\.\d{3}-)([kK]{1}$|\d{1}$)" required>
         <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
         </div>
     </div>
     <div class="form-row justify-content-center">
-        <input type="button" class="btn btn-success text-center" (click)="buscarPorRut()" value="Buscar">
+        <input type="button" class="btn btn-success text-center" (click)="buscarPorRut(formaRut)" value="Buscar">
     </div>
 </form>
 

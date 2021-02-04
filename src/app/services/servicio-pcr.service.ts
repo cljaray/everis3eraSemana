@@ -49,6 +49,12 @@ export class ServicioPCRService {
   pacientesAltoRiesgo(): Observable<any>{
     return this.http.get(`${environment.urlPcrBase}/pcr/pacientesAltoRiesgo`)
   }
+
+  buscarPorNombreApellido(nombre: string, apellido: string): Observable<any>{
+    const parametros = new HttpParams().set("nombre", nombre).set("apellido", apellido);
+    
+    return this.http.get(`${environment.urlPcrBase}/pcr/buscarNombreApellido`, { params: parametros })
+  }
   
   borrarPcr(rut){
     return this.http.delete(`${environment.urlPcrBase}/pcr/eliminarPCR/${rut}`);

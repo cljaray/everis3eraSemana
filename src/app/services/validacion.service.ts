@@ -24,7 +24,10 @@ export class ValidacionService {
 
   validacionDatos(){  
    
-    if (!this.edadValida){
+    if (this.ngFormPCR === undefined || this.ngFormPCR.invalid){
+      alert("Porfavor rellenar los campos requeridos")
+      return false;
+    } else if (!this.edadValida){
       alert("Porfavor ingresa una edad valida")
       return false;
     } else if (!this.telefonoValido){
@@ -36,10 +39,7 @@ export class ValidacionService {
     } else if (!this.correoValido){
       alert("Porfavor verificar que tu correo coincida")
       return false;
-    }  if (this.ngFormPCR === undefined || this.ngFormPCR.invalid){
-      alert("Porfavor rellenar los campos requeridos")
-      return false;
-    } 
+    }  
 
     return true;
   }
@@ -88,4 +88,6 @@ export class ValidacionService {
 
 
   }
+
+  
 }

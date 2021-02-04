@@ -24,12 +24,12 @@ export class InformacionExamenComponent implements OnInit {
       this.buscarRut(params.rut)
     )
 
-    this.pcrService.getValuePCR().subscribe(pcr => {
+    /* this.pcrService.getValuePCR().subscribe(pcr => {
       if(pcr){
         this.pcr = pcr;
       } 
      }
-    )
+    ) */
 
   }
 
@@ -37,12 +37,13 @@ export class InformacionExamenComponent implements OnInit {
     this.pcrService.buscarPorRut(rut).subscribe(pcr => {
       console.log(pcr)
       if(pcr){
-        this.pcrService.setValuePCR(pcr);
+        this.pcr = pcr;
       }
     })
   }
 
   actualizarPcr(){
+    this.pcrService.setValuePCR(this.pcr)
     this.router.navigate(["/actualizar"])
   }
 

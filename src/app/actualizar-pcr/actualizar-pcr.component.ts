@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Pcr } from '../models/Pcr';
 import { DatosFormaService } from '../services/datos-forma.service';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
+import { ValidacionService } from '../services/validacion.service';
 
 @Component({
   selector: 'app-actualizar-pcr',
@@ -15,7 +16,10 @@ export class ActualizarPcrComponent implements OnInit {
 
   inputBuscarRut: string;
 
-  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService, private router: Router) { }
+  constructor(private servicioPCR: ServicioPCRService, 
+    public datosFormaService: DatosFormaService, 
+    private router: Router,
+    private validacion: ValidacionService) { }
 
   ngOnInit(): void {
     this.servicioPCR.getValuePCR().subscribe(pcr => {
@@ -25,26 +29,40 @@ export class ActualizarPcrComponent implements OnInit {
     })
   }
 
-  buscarRut(){
-    this.servicioPCR.buscarPorRut(this.inputBuscarRut).subscribe(respuesta => {
-      console.log(respuesta)
-      if(respuesta){
-        this.servicioPCR.setValuePCR(respuesta);
-        return this.router.navigate(["/actualizar"])
-      }      
-    }, error => {
-      console.log(error);
-    })
+  buscarRut(forma){
+    if(forma.valid){
+      this.servicioPCR.buscarPorRut(this.inputBuscarRut).subscribe(respuesta => {
+        
+        if(respuesta){
+          this.servicioPCR.setValuePCR(respuesta);
+          return this.router.navigate(["/actualizar"])
+        } else {
+          alert("Rut no encontrado")
+        }   
+      }, error => {
+        console.log(error);
+      })
+    } else {
+      return alert("Porfavor ingresa un rut valido")
+    }
+
   }
 
   actualizar(){
-    return this.servicioPCR.actualizar(this.pcr.rut, this.pcr).subscribe(pcr => {
-      if(pcr){
-        this.router.navigate([`/informacion/${pcr.rut}`])
-      }
-    }, error =>{
-      console.log(error)
-    })
+    if(this.validacion.validacionDatos()){
+      return this.servicioPCR.actualizar(this.pcr.rut, this.pcr).subscribe(pcr => {
+        if(pcr){
+          const reseteoPCR = new Pcr();
+
+          reseteoPCR.resultado = "pendiente";
+          reseteoPCR.altoRiesgo = false;
+          this.servicioPCR.setValuePCR(reseteoPCR);
+          this.router.navigate([`/informacion/${pcr.rut}`])
+        }
+      }, error =>{
+        console.log(error)
+      })
+    }
   }
 
 }
