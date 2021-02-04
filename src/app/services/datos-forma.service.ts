@@ -9,10 +9,6 @@ export class DatosFormaService {
   pcr = new Pcr();
 
   constructor() { }
-
-  setDatosPCR(event){    
-    
-    
-  }
+  
 }
 

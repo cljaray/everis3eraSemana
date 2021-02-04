@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import  { HttpClient, HttpParams } from  '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pcr } from '../models/Pcr';
 
@@ -9,9 +9,20 @@ import { Pcr } from '../models/Pcr';
 })
 export class ServicioPCRService {
 
-  currentPCR: Pcr;
+  private currentPCR: BehaviorSubject<any>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.currentPCR = new BehaviorSubject<any>(null);
+  }
+
+  setValuePCR(pcr){
+    this.currentPCR.next(pcr);
+  }
+
+  getValuePCR(): Observable<any>{
+    return this.currentPCR.asObservable();
+  }
+
 
   buscar(): Observable<any> {
     return this.http.get(`${environment.urlPcrBase}/pcr/buscarTodosPCR`)
@@ -22,8 +33,7 @@ export class ServicioPCRService {
   }
 
   buscarPorRut(rut: string): Observable<any> {
-    const parametros = new HttpParams().set("rut", rut);
-    return this.http.get(`${environment.urlPcrBase}/pcr/buscarPorRut`, { params : parametros })
+    return this.http.get(`${environment.urlPcrBase}/pcr/buscarPorRut/${rut}`)
   }
 
   buscarPorComuna(comuna: string): Observable<any>{
@@ -40,8 +50,8 @@ export class ServicioPCRService {
     return this.http.get(`${environment.urlPcrBase}/pcr/pacientesAltoRiesgo`)
   }
   
-  borrarPcr(){
-    return this.http.delete(`${environment.urlPcrBase}/pcr/eliminarPCR`);
+  borrarPcr(rut){
+    return this.http.delete(`${environment.urlPcrBase}/pcr/eliminarPCR/${rut}`);
   }
 
   actualizar(rut: string, pcr: Pcr): Observable<any> {

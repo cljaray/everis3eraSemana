@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormaPCRComponent } from './forma-pcr/forma-pcr.component';
 import { IngresarComponent } from './ingresar/ingresar.component';
@@ -22,6 +22,7 @@ import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada
 import { ModalConfirmacionBorrarComponent } from './modal-confirmacion-borrar/modal-confirmacion-borrar.component';
 import { ServicioPCRService } from './services/servicio-pcr.service';
 import { DatosFormaService } from './services/datos-forma.service';
+import { ValidacionService } from './services/validacion.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +45,10 @@ import { DatosFormaService } from './services/datos-forma.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthGuard, AuthService, ServicioPCRService, DatosFormaService],
+  providers: [AuthGuard, AuthService, ServicioPCRService, DatosFormaService, ValidacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

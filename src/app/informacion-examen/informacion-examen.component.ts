@@ -11,7 +11,7 @@ import { ServicioPCRService } from '../services/servicio-pcr.service';
 })
 export class InformacionExamenComponent implements OnInit {
 
-  
+  pcr = new Pcr();
 
   constructor(public rutaActiva: ActivatedRoute, 
     public pcrService: ServicioPCRService, 
@@ -24,13 +24,20 @@ export class InformacionExamenComponent implements OnInit {
       this.buscarRut(params.rut)
     )
 
+    this.pcrService.getValuePCR().subscribe(pcr => {
+      if(pcr){
+        this.pcr = pcr;
+      } 
+     }
+    )
+
   }
 
   buscarRut(rut: string){
     this.pcrService.buscarPorRut(rut).subscribe(pcr => {
       console.log(pcr)
       if(pcr){
-        this.pcrService.currentPCR = pcr;
+        this.pcrService.setValuePCR(pcr);
       }
     })
   }

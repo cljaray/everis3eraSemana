@@ -1,46 +1,46 @@
 
 <h1 class="text-center mt-3">Informacion Exámen</h1>
 <!-- 
-<ng-container *ngIf="pcrService.currentPCR else mensaje">
+<ng-container *ngIf="pcr else mensaje">
     <div class="container justify-content-center text-center my-4 pb-5">
         <p>
-            <strong> Nombre:</strong> {{ pcrService.currentPCR.nombre }}
+            <strong> Nombre:</strong> {{ pcr.nombre }}
         </p>
         <p>
-            <strong> Apellido:</strong> {{ pcrService.currentPCR.apellido }}
+            <strong> Apellido:</strong> {{ pcr.apellido }}
         </p>
         <p>
-            <strong> Rut:</strong> {{ pcrService.currentPCR.rut }}
+            <strong> Rut:</strong> {{ pcr.rut }}
         </p>
         <p>
-            <strong> Edad:</strong> {{ pcrService.currentPCR.edad }}
+            <strong> Edad:</strong> {{ pcr.edad }}
         </p>
         <p>
-            <strong> Numero de Telefono: </strong>{{ pcrService.currentPCR.numeroTelefono }}
+            <strong> Numero de Telefono: </strong>{{ pcr.numeroTelefono }}
         </p>
         <p>
-            <strong> Numero de emergencia: </strong>{{ pcrService.currentPCR.numeroEmergencia }}
+            <strong> Numero de emergencia: </strong>{{ pcr.numeroEmergencia }}
         </p>
         <p>
-            <strong> Direccion de residencia:</strong> {{ pcrService.currentPCR.direccion }}
+            <strong> Direccion de residencia:</strong> {{ pcr.direccion }}
         </p>
         <p>
-            <strong> Comuna de residencia:</strong> {{ pcrService.currentPCR.comunaDeResidencia }}
+            <strong> Comuna de residencia:</strong> {{ pcr.comunaDeResidencia }}
         </p>
         <p>
-            <strong> Villa o Población: </strong>{{ pcrService.currentPCR.residencia }}
+            <strong> Villa o Población: </strong>{{ pcr.residencia }}
         </p>
         <p>
-            <strong> Paciente de Alto Riesgo:</strong> {{ pcrService.currentPCR.altoRiesgo }}
+            <strong> Paciente de Alto Riesgo:</strong> {{ pcr.altoRiesgo }}
         </p>
         <p>
-            <strong> Hora de exámen:</strong> {{ pcrService.currentPCR.hora }}
+            <strong> Hora de exámen:</strong> {{ pcr.hora }}
         </p>
         <p>
-            <strong> Lugar de exámen:</strong> {{ pcrService.currentPCR.locacion }}
+            <strong> Lugar de exámen:</strong> {{ pcr.locacion }}
         </p>
         <p>
-            <strong> Correo:</strong> {{ pcrService.currentPCR.correo }}
+            <strong> Correo:</strong> {{ pcr.correo }}
         </p>
         <button class="btn btn-success">Actualizar</button>
     </div>  
@@ -52,93 +52,94 @@
 </ng-template> -->
 <div class="row justify-content-center">
 
-
-<table class="table table-bordered table-striped col-8">
-    <thead class="thead-dark">
-      <tr>
-        <th colspan="2">Datos personales</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>Nombre</th>
-          <td>{{ pcrService.currentPCR.nombre }} {{pcrService.currentPCR.apellido }}</td>
-      </tr>
-      <tr>
-        <th>Rut</th>
-        <td>{{ pcrService.currentPCR.rut }}</td>
-      </tr>
-      <tr>
-        <th>Edad</th>
-        <td>{{ pcrService.currentPCR.edad }}</td>
-      </tr>
-      <tr>
-          <th>Alto riesgo</th>
-          <td>{{ pcrService.currentPCR.altoRiesgo }}</td>
-        </tr>
-      
-    </tbody>
-  </table>
-  <div class="w-100"></div>
+<ng-container *ngIf="pcr">
   <table class="table table-bordered table-striped col-8">
-    <thead class="thead-dark">
-      <tr>
-        <th colspan="2">Datos de contacto</th>
-      </tr>
-    </thead>
-    <tbody>
+      <thead class="thead-dark">
         <tr>
-            <th>Dirección de residencia</th>
-            <td>{{ pcrService.currentPCR.direccion }}</td>
+          <th colspan="2">Datos personales</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Nombre</th>
+            <td>{{ pcr.nombre }} {{pcr.apellido }}</td>
+        </tr>
+        <tr>
+          <th>Rut</th>
+          <td>{{ pcr.rut }}</td>
+        </tr>
+        <tr>
+          <th>Edad</th>
+          <td>{{ pcr.edad }}</td>
+        </tr>
+        <tr>
+            <th>Alto riesgo</th>
+            <td>{{ pcr.altoRiesgo }}</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    <div class="w-100"></div>
+    <table class="table table-bordered table-striped col-8">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="2">Datos de contacto</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <th>Dirección de residencia</th>
+              <td>{{ pcr.direccion }}</td>
+            </tr>
+          <tr>
+            <th>Comuna de residencia</th>
+            <td>{{ pcr.comunaDeResidencia }}</td>
+          </tr>
+          <tr>
+            <th>Villa o población</th>
+            <td>{{ pcr.villaPoblacion }}</td>
           </tr>
         <tr>
-          <th>Comuna de residencia</th>
-          <td>{{ pcrService.currentPCR.comunaDeResidencia }}</td>
+          <th>Numero de teléfono</th>
+          <td>{{ pcr.telefono }}</td>
         </tr>
         <tr>
-          <th>Villa o población</th>
-          <td>{{ pcrService.currentPCR.villaPoblacion }}</td>
+          <th>Numero secundario</th>
+          <td>{{ pcr.telefonoSecundario }}</td>
         </tr>
-      <tr>
-        <th>Numero de teléfono</th>
-        <td>{{ pcrService.currentPCR.telefono }}</td>
-      </tr>
-      <tr>
-        <th>Numero secundario</th>
-        <td>{{ pcrService.currentPCR.telefonoSecundario }}</td>
-      </tr>
-      <tr>
-        <th>Correo</th>
-        <td>{{ pcrService.currentPCR.correo }}</td>
-      </tr>      
-    </tbody>
-  </table>
-  <div class="w-100"></div>
-  <table class="table table-bordered table-striped col-8">
-    <thead class="thead-dark">
-      <tr>
-        <th colspan="2">Datos de examen</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>Hora de exámen</th>
-        <td>{{ pcrService.currentPCR.hora }}</td>
-      </tr>
-      <tr>
-        <th>Lugar de exámen</th>
-        <td>{{ pcrService.currentPCR.lugarTomaExamen }}</td>
-      </tr>   
-      <tr>
-        <th>Resultado de exámen</th>
-        <td>{{ pcrService.currentPCR.resultado }}</td>
-      </tr>   
-      <tr>
-        <th>Fecha de exámen</th>
-        <td>{{ pcrService.currentPCR.fechaExamen }}</td>  
-      </tr>   
-    </tbody>
-  </table>
+        <tr>
+          <th>Correo</th>
+          <td>{{ pcr.correo }}</td>
+        </tr>      
+      </tbody>
+    </table>
+    <div class="w-100"></div>
+    <table class="table table-bordered table-striped col-8">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="2">Datos de examen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Hora de exámen</th>
+          <td>{{ pcr.hora }}</td>
+        </tr>
+        <tr>
+          <th>Lugar de exámen</th>
+          <td>{{ pcr.lugarTomaExamen }}</td>
+        </tr>   
+        <tr>
+          <th>Resultado de exámen</th>
+          <td>{{ pcr.resultado }}</td>
+        </tr>   
+        <tr>
+          <th>Fecha de exámen</th>
+          <td>{{ pcr.fechaExamen }}</td>  
+        </tr>   
+      </tbody>
+    </table>
+</ng-container>
   <div class="w-100"></div>
   <button class="btn btn-success" (click)="actualizarPcr()">Actualizar</button>
   <button class="btn btn-danger mr-3"data-toggle="modal" data-target="#exampleModal">Borrar</button>

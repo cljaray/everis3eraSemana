@@ -1,3 +1,15 @@
 * {
     color: black;
 }
+
+input.ng-invalid{
+    border-color: red;
+}
+
+input.ng-untouched{
+    border-color: gray;
+}
+
+.invalidInput {
+    border-color: red;
+}

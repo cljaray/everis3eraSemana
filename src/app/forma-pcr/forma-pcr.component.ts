@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Pcr } from '../models/Pcr';
 import { DatosFormaService } from '../services/datos-forma.service';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
+import { ValidacionService } from '../services/validacion.service';
 
 @Component({
   selector: 'app-forma-pcr',
@@ -17,30 +19,39 @@ export class FormaPCRComponent implements OnInit {
   inputBuscarRut: string;
   
   todosLosPCR: Pcr[];
+
   
-  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService, private router: Router) { }
+
+  
+  constructor(private servicioPCR: ServicioPCRService, 
+    public datosFormaService: DatosFormaService, 
+    private router: Router,
+    public validacion: ValidacionService) { }
 
   ngOnInit(): void {
-    console.log(this.router.url === "/actualizar")
-    if(this.router.url === "/actualizar" && this.servicioPCR.currentPCR){
-     this.pcr = this.servicioPCR.currentPCR;
+
+    if(this.router.url === "/actualizar"){
+      this.servicioPCR.getValuePCR().subscribe(pcr => {
+        this.pcr = pcr;
+
+      })
     } else if(this.datosFormaService.pcr) {
+
       this.pcr = this.datosFormaService.pcr;
+      this.pcr.altoRiesgo = false;
+      this.pcr.resultado = "pendiente"
     }
 
   }
 
-  addToPcrService(event){   
-    this.datosFormaService.setDatosPCR(event);
+  validacionCorreo(confirmacionCorreo){
+    this.validacion.validacionCorreo(this.pcr.correo, confirmacionCorreo)
   }
 
-
-  validacionForma(form){
-    console.log(form)
-    if(form.invalid){
-      return alert("porfavor rellena los campos")
-    }
-
+  pruebaChange(forma){
+    this.validacion.ngFormPCR = forma;
+    console.log(forma);
   }
-  
+ 
+
 }

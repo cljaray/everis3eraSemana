@@ -28,7 +28,7 @@ export class AuthService {
         this.session.username = respuesta.user.username
         this.storage.setCurrentSession(this.session)
         this.isAuthChecker = true;        
-        return this.router.navigate(['/ingresar'])
+        return this.router.navigate(['/listaExamenes'])
       }
 
        return alert("Este usuario no existe");

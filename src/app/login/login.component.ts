@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit,  } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,10 +12,14 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private autorizacion: AuthService) { }
+  constructor(private autorizacion: AuthService, private router:Router) { }
 
   ngOnInit(): void {
     /* agregar isAuth y navigate */
+    if(this.autorizacion.isAuth()){
+        this.router.navigate(["/listaExamenes"]);
+    }     
+
   }
 
   login(){
