@@ -5,17 +5,17 @@
       <div class="form-group col-md-4">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" placeholder="Nombre"
-        [(ngModel)]="datosFormaService.pcr.nombre" ngModel #nombre="ngModel" name="nombre" required>
+        [(ngModel)]="pcr.nombre" ngModel #nombre="ngModel" name="nombre" required>
       </div>
       <div class="form-group col-md-4">
         <label for="Apellido">Apellido</label>
         <input type="text" class="form-control" id="Apellido" placeholder="Apellido"
-        [(ngModel)]="datosFormaService.pcr.apellido" ngModel #nombre="ngModel" name="nombre" required>
+        [(ngModel)]="pcr.apellido" ngModel #apellido="ngModel" name="apellido" required>
       </div>
       <div class="form-group col-md-4">
         <label>Paciente alto riesgo</label>
         <select class="custom-select" placeholder="Selecciona..."
-        [(ngModel)]="datosFormaService.pcr.altoRiesgo" ngModel #altoRiesgo="ngModel" name="altoRiesgo" required>
+        [(ngModel)]="pcr.altoRiesgo" ngModel #altoRiesgo="ngModel" name="altoRiesgo" required>
             <option value="1" disabled selected>Selecciona...</option>
             <option value="true">Si</option>
             <option value="false">No</option>
@@ -26,17 +26,17 @@
       <div class="form-group col-md-4">
         <label for="rut">Rut</label>
         <input type="text" class="form-control" id="rut" placeholder="Rut"
-        [(ngModel)]="datosFormaService.pcr.rut" ngModel #rut="ngModel" name="rut" required>
+        [(ngModel)]="pcr.rut" ngModel #rut="ngModel" name="rut" required>
       </div>
       <div class="form-group col-md-4">
         <label for="edad">Edad</label>
         <input type="number" class="form-control" id="edad" placeholder="Edad"
-        [(ngModel)]="datosFormaService.pcr.edad" ngModel #edad="ngModel" name="edad" required>
+        [(ngModel)]="pcr.edad" ngModel #edad="ngModel" name="edad" required>
       </div>   
       <div class="form-group col-md-4">
         <label>Resultado exámen</label>
         <select class="custom-select" 
-        [(ngModel)]="datosFormaService.pcr.resultado" ngModel #resultado="ngModel" name="resultado" required>
+        [(ngModel)]="pcr.resultado" ngModel #resultado="ngModel" name="resultado" required>
             <option disabled selected>Selecciona...</option>
             <option value="pendiente">Pendiente</option >
             <option value="positivo">Positivo</option>
@@ -49,12 +49,12 @@
       <div class="form-group col-md-4">
         <label for="numeroTelefono">Numero de teléfono</label>
         <input type="number" class="form-control" id="telefono" placeholder="Teléfono"
-        [(ngModel)]="datosFormaService.pcr.telefono" ngModel #numeroTelefono="ngModel" name="numeroTelefono" required>
+        [(ngModel)]="pcr.telefono" ngModel #numeroTelefono="ngModel" name="numeroTelefono" required>
       </div>
       <div class="form-group col-md-4">
         <label for="numeroEmergencia">Numero de teléfono secundario</label>
         <input type="number" class="form-control" id="edad" placeholder="Teléfono secundario"
-        [(ngModel)]="datosFormaService.pcr.telefonoSecundario" ngModel #numeroEmergencia="ngModel" name="numeroEmergencia" required>
+        [(ngModel)]="pcr.telefonoSecundario" ngModel #numeroEmergencia="ngModel" name="numeroEmergencia" required>
       </div>
     </div>
 
@@ -62,17 +62,17 @@
       <div class="form-group col-md-6">
         <label for="direccion">Dirección de vivienda</label>
         <input type="text" class="form-control" id="direccion" placeholder="Direccion"
-        [(ngModel)]="datosFormaService.pcr.direccion" name="direccion" ngModel #direccion="ngModel" name="direccion" required>
+        [(ngModel)]="pcr.direccion" name="direccion" ngModel #direccion="ngModel" name="direccion" required>
       </div>
       <div class="form-group col-md-3">
         <label for="comunaDeResidencia">Comuna de residencia</label>
         <input type="text" class="form-control" id="comunaResidencia" placeholder="Comuna"
-        [(ngModel)]="datosFormaService.pcr.comunaDeResidencia" name="comunaDeResidencia" ngModel #comunaDeResidencia="ngModel" name="comunaDeResidencia" required>
+        [(ngModel)]="pcr.comunaDeResidencia" name="comunaDeResidencia" ngModel #comunaDeResidencia="ngModel" name="comunaDeResidencia" required>
       </div>      
       <div class="form-group col-md-3">
         <label for="residencia">Villa o población</label>
         <input type="text" class="form-control" id="residencia" placeholder="Villa o población"
-        [(ngModel)]="datosFormaService.pcr.villaPoblacion" name="residencia" ngModel #residencia="ngModel" name="residencia" required>
+        [(ngModel)]="pcr.villaPoblacion" name="residencia" ngModel #residencia="ngModel" name="residencia" required>
       </div>      
     </div>
     <div class="form-group">
@@ -82,12 +82,12 @@
         <div class="form-group col-md-4">
             <label for="hora">Hora de exámen</label>
             <input type="text" class="form-control" id="hora" placeholder="11:11"
-            [(ngModel)]="datosFormaService.pcr.hora" name="hora" ngModel #hora="ngModel" name="hora" required>
+            [(ngModel)]="pcr.hora" name="hora" ngModel #hora="ngModel" name="hora" required>
         </div>
         <div class="form-group col-md-4">
             <label for="inputAddress2">Lugar de toma de exámen</label>
             <input type="text" class="form-control" id="locacion" placeholder="Lugar de toma de exámen"
-            [(ngModel)]="datosFormaService.pcr.lugarTomaExamen" name="locacion" ngModel #locacion="ngModel" name="locacion" required>
+            [(ngModel)]="pcr.lugarTomaExamen" name="locacion" ngModel #locacion="ngModel" name="locacion" required>
         </div>       
         
 
@@ -96,12 +96,12 @@
         <div class="form-group col-md-4">
             <label for="inputAddress">Correo:</label>
             <input type="text" class="form-control" id="correo" placeholder="tucorreo@gmail.com"
-            [(ngModel)]="datosFormaService.pcr.correo" name="correo" ngModel #correo="ngModel" name="correo" required>
+            [(ngModel)]="pcr.correo" name="correo" ngModel #correo="ngModel" name="correo" required>
         </div>
         <div class="form-group col-md-4">
                 <label for="inputAddress2">Confirmacion correo:</label>
             <input type="text" class="form-control" id="confirmacionCorreo" placeholder="tucorreo@gmail.com"
-            [(ngModel)]="datosFormaService.pcr.confirmacionCorreo" name="confirmacionCorreo" ngModel #confirmacionCorreo="ngModel" name="confirmacionCorreo" required>
+            [(ngModel)]="pcr.confirmacionCorreo" name="confirmacionCorreo" ngModel #confirmacionCorreo="ngModel" name="confirmacionCorreo" required>
         </div>
     </div>
   </form>

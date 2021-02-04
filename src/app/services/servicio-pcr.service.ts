@@ -40,7 +40,9 @@ export class ServicioPCRService {
     return this.http.get(`${environment.urlPcrBase}/pcr/pacientesAltoRiesgo`)
   }
   
-
+  borrarPcr(){
+    return this.http.delete(`${environment.urlPcrBase}/pcr/eliminarPCR`);
+  }
 
   actualizar(rut: string, pcr: Pcr): Observable<any> {
     const parametros = new HttpParams().set("rut", rut);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DatosFormaService } from '../services/datos-forma.service';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
 
@@ -11,7 +12,7 @@ export class ActualizarPcrComponent implements OnInit {
 
   inputBuscarRut: string;
 
-  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService) { }
+  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +21,8 @@ export class ActualizarPcrComponent implements OnInit {
     this.servicioPCR.buscarPorRut(this.inputBuscarRut).subscribe(respuesta => {
       console.log(respuesta)
       if(respuesta){
-        return this.datosFormaService.pcr = respuesta;
+        this.servicioPCR.currentPCR = respuesta;
+        return this.router.navigate(["/actualizar"])
       }      
     }, error => {
       console.log(error);
@@ -28,9 +30,10 @@ export class ActualizarPcrComponent implements OnInit {
   }
 
   actualizar(){
-    return this.servicioPCR.actualizar(this.datosFormaService.pcr.rut, this.datosFormaService.pcr).subscribe(respuesta => {
-      console.log(JSON.stringify(this.datosFormaService.pcr))
-      console.log(respuesta)
+    return this.servicioPCR.actualizar(this.servicioPCR.currentPCR.rut, this.servicioPCR.currentPCR).subscribe(pcr => {
+      if(pcr){
+        this.router.navigate([`/informacion/${pcr.rut}`])
+      }
     }, error =>{
       console.log(error)
     })

@@ -13,7 +13,7 @@ import { MostrarTodosPcrComponent } from './mostrar-todos-pcr/mostrar-todos-pcr.
 
 const routes: Routes = [
   { path:"", component: LoginComponent },
-  { path:"listaExamenes", component: MostrarTodosPcrComponent},
+  { path:"listaExamenes", component: MostrarTodosPcrComponent, canActivate: [AuthGuard]},
   { path:"ingresar", component: GuardarPCRComponent , canActivate: [AuthGuard] },
   { path:"actualizar", component: ActualizarPcrComponent , canActivate: [AuthGuard] },
   { path:"buscar", component: BusquedaAvanzadaComponent , canActivate: [AuthGuard] },

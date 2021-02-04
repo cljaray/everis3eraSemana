@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Pcr } from '../models/Pcr';
 import { DatosFormaService } from '../services/datos-forma.service';
@@ -17,26 +18,22 @@ export class FormaPCRComponent implements OnInit {
   
   todosLosPCR: Pcr[];
   
-  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService) { }
+  constructor(private servicioPCR: ServicioPCRService, public datosFormaService: DatosFormaService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.router.url === "/actualizar")
+    if(this.router.url === "/actualizar" && this.servicioPCR.currentPCR){
+     this.pcr = this.servicioPCR.currentPCR;
+    } else if(this.datosFormaService.pcr) {
+      this.pcr = this.datosFormaService.pcr;
+    }
+
   }
 
   addToPcrService(event){   
     this.datosFormaService.setDatosPCR(event);
   }
 
-  actualizar(){
-    return this.servicioPCR.actualizar(this.datosFormaService.pcr.rut, this.datosFormaService.pcr).subscribe(respuesta => {
-      console.log(respuesta)
-    }, error =>{
-      console.log(error)
-    })
-  }
-
-  log(value){
-    console.log(value)
-  }
 
   validacionForma(form){
     console.log(form)

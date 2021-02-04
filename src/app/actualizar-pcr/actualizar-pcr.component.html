@@ -4,18 +4,19 @@
     <div class="form-row justify-content-center">
         <div class="form-group col-6">
         <label for="buscarRut">Buscar por rut:</label>
-        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut">
+        <input name="busquedaRut" type="text" class="form-control" id="buscarRut" aria-describedby="rut" placeholder="Ingresa rut"
+        [(ngModel)]="inputBuscarRut">
         <small id="rut" class="form-text text-muted">Rut debe ser ingresado con puntos y guión (11.111.111-1)</small>
         </div>
     </div>
     <div class="form-row justify-content-center">
-        <input type="button" class="btn btn-success text-center"value="Buscar">
+        <input type="button" class="btn btn-success text-center" (click)="buscarRut()" value="Buscar">
     </div>
 </form>
 
 <app-forma-pcr></app-forma-pcr>
 
 <div class="row justify-content-center mb-4">
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" (click)="actualizar()">Guardar</button>
 </div>
 

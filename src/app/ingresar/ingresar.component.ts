@@ -10,6 +10,7 @@ export class IngresarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

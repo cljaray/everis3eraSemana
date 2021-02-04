@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { PersonaComponent } from './persona/persona.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormaPCRComponent } from './forma-pcr/forma-pcr.component';
@@ -20,12 +19,14 @@ import { AuthService } from './services/auth.service';
 import { BienvenidaComponent } from './bienvenida/bienvenida.component';
 import { InformacionExamenComponent } from './informacion-examen/informacion-examen.component';
 import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada.component';
+import { ModalConfirmacionBorrarComponent } from './modal-confirmacion-borrar/modal-confirmacion-borrar.component';
+import { ServicioPCRService } from './services/servicio-pcr.service';
+import { DatosFormaService } from './services/datos-forma.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PersonaComponent,
     FormaPCRComponent,
     IngresarComponent,
     LoginComponent,
@@ -36,7 +37,8 @@ import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada
     MostrarTodosPcrComponent,
     BienvenidaComponent,
     InformacionExamenComponent,
-    BusquedaAvanzadaComponent
+    BusquedaAvanzadaComponent,
+    ModalConfirmacionBorrarComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { BusquedaAvanzadaComponent } from './busqueda-avanzada/busqueda-avanzada
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, ServicioPCRService, DatosFormaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
