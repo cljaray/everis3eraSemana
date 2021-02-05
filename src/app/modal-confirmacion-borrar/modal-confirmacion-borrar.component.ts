@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pcr } from '../models/Pcr';
 import { ServicioPCRService } from '../services/servicio-pcr.service';
 
@@ -12,16 +12,23 @@ export class ModalConfirmacionBorrarComponent implements OnInit {
 
   pcr: Pcr;
 
-  constructor(private servicioPCR: ServicioPCRService, private router: Router) { }
+  rut: string;
+
+  constructor(private servicioPCR: ServicioPCRService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.servicioPCR.getValuePCR().subscribe(pcr => {
-      this.pcr = pcr;
-    })
+    this.rutaActiva.params.subscribe(params => {
+      console.log(params)
+        if(params){
+          this.rut = params.rut
+        }
+      }
+      
+    )
   }
 
   borrarPCR(){
-    this.servicioPCR.borrarPcr(this.pcr.rut).subscribe(respuesta => {
+    this.servicioPCR.borrarPcr(this.rut).subscribe(respuesta => {
       if(respuesta){
         this.router.navigate(["/listaExamenes"])
       }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
@@ -12,7 +12,7 @@ import { ValidacionService } from '../services/validacion.service';
   templateUrl: './forma-pcr.component.html',
   styleUrls: ['./forma-pcr.component.css']
 })
-export class FormaPCRComponent implements OnInit {
+export class FormaPCRComponent implements OnInit, AfterViewInit {
 
   pcr = new Pcr();
   
@@ -20,7 +20,7 @@ export class FormaPCRComponent implements OnInit {
   
   todosLosPCR: Pcr[];
 
-  
+  @ViewChild('pcrForm') pcrFormPrueba;
 
   
   constructor(private servicioPCR: ServicioPCRService, 
@@ -46,6 +46,12 @@ export class FormaPCRComponent implements OnInit {
       this.pcr.resultado = "pendiente"
     }
 
+  }
+
+  ngAfterViewInit(){
+    console.log("desde view init forma")
+    console.log(this.pcrFormPrueba)
+    this.validacion.ngFormPCR = this.pcrFormPrueba
   }
 
   validacionCorreo(confirmacionCorreo){

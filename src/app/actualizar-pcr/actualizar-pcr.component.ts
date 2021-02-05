@@ -30,6 +30,7 @@ export class ActualizarPcrComponent implements OnInit {
   }
 
   buscarRut(forma){
+    forma.submit
     if(forma.valid){
       this.servicioPCR.buscarPorRut(this.inputBuscarRut).subscribe(respuesta => {
         
@@ -49,7 +50,7 @@ export class ActualizarPcrComponent implements OnInit {
   }
 
   actualizar(){
-    if(this.validacion.validacionDatos()){
+    if(this.validacion.validacionDatosActualizar()){
       return this.servicioPCR.actualizar(this.pcr.rut, this.pcr).subscribe(pcr => {
         if(pcr){
           const reseteoPCR = new Pcr();

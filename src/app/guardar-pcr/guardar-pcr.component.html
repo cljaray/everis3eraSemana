@@ -1,11 +1,6 @@
 <app-forma-pcr></app-forma-pcr>
 
 <div class="row justify-content-center">
-    <button class="btn btn-success" (click)="guardar()">Guardar</button>
+    <button class="btn btn-success" (click)="verificarRut()">Guardar</button>
 </div>
 
-
-<div *ngIf="nuevoPCR">
-    <p>Nuevo PCR creado</p>
-    <p> {{ pcrValues | json }} </p>
-</div> 

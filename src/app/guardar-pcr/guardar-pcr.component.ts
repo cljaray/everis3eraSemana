@@ -11,9 +11,8 @@ import { ValidacionService } from '../services/validacion.service';
   templateUrl: './guardar-pcr.component.html',
   styleUrls: ['./guardar-pcr.component.css']
 })
-export class GuardarPCRComponent implements AfterViewInit  {
+export class GuardarPCRComponent  {
 
-  @ViewChildren('pcrForm') pcrForm;
   
   pcr = new Pcr();
   nuevoPCR: Pcr;
@@ -24,24 +23,33 @@ export class GuardarPCRComponent implements AfterViewInit  {
     public validacion: ValidacionService) { }
 
 
-  ngAfterViewInit(){
-    console.log(this.pcrForm);
-  }
 
-  guardar(){  
+  verificarRut(){
+    this.validacion.verificarRutExistente().subscribe(rut => {
+      if(rut === null || rut === undefined){
+        return alert("Este rut ya existe");
+      }
+      if(!rut){
+        return this.guardar();
+      } 
+      return alert("Este rut ya existe");
+    }, error => {
+      console.log(error);
+    })
+  }
+    
+
+  guardar(){ 
     if(this.validacion.validacionDatos()){
       this.servicioPCR.guardar(this.datosFormaService.pcr).subscribe(respuesta => {
           if(respuesta){
             this.nuevoPCR = respuesta;
             this.router.navigate([`/informacion/${respuesta.rut}`]);
-          }
-          
+          }          
         }, error => {
           console.log(error);
       })
-
-    }
-   
+    }       
 } 
 
 }

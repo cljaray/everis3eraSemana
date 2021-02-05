@@ -24,20 +24,14 @@ export class InformacionExamenComponent implements OnInit {
       this.buscarRut(params.rut)
     )
 
-    /* this.pcrService.getValuePCR().subscribe(pcr => {
-      if(pcr){
-        this.pcr = pcr;
-      } 
-     }
-    ) */
-
+    
   }
 
   buscarRut(rut: string){
     this.pcrService.buscarPorRut(rut).subscribe(pcr => {
       console.log(pcr)
       if(pcr){
-        this.pcr = pcr;
+        this.pcr = pcr;        
       }
     })
   }
@@ -45,6 +39,20 @@ export class InformacionExamenComponent implements OnInit {
   actualizarPcr(){
     this.pcrService.setValuePCR(this.pcr)
     this.router.navigate(["/actualizar"])
+  }
+
+  formatoFecha(fechaPcr){
+    
+    const fecha = new Date(fechaPcr);
+    
+    const dia = fecha.getDay() < 0 ? fecha.getDay() : `0${fecha.getDay()}`;
+    const mes = fecha.getMonth() + 1 < 0 ? fecha.getMonth() + 1 : `0${fecha.getMonth() + 1}`;;
+    const año = fecha.getFullYear();
+
+    const fechaFormateada = `${dia}/${mes}/${año}`
+
+    return fechaFormateada;
+    
   }
 
 }

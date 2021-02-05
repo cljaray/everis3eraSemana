@@ -65,5 +65,10 @@ export class ServicioPCRService {
     return this.http.put(`${environment.urlPcrBase}/pcr/actualizarPCR/${rut}`, pcr)
   }
 
+  verificarRutExistente(rut: string){
+    console.log(rut)
+    const parametros = new HttpParams().set("rut", rut);
+    return this.http.get(`${environment.urlPcrBase}/pcr/comprobarRutExistente`, { params : parametros })
+  }
 
 }

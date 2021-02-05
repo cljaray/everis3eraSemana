@@ -53,6 +53,8 @@ export class BusquedaAvanzadaComponent implements OnInit {
 
   buscarPorRut(forma){
     console.log(forma);
+   
+
     if(forma.valid){
       this.servicioPCR.buscarPorRut(this.busqueda).subscribe(rut => {
         console.log(rut);
@@ -117,6 +119,7 @@ export class BusquedaAvanzadaComponent implements OnInit {
 
 
   setFiltroBusqueda(evento){
+    
     this.nombreBusqueda = evento.target.dataset.nombre;
     this.filtroBusqueda = this.configBusqueda[evento.target.value];
     this.filtroMetodos = evento.target.value;
@@ -130,6 +133,13 @@ export class BusquedaAvanzadaComponent implements OnInit {
       return this.mostrarBusqueda = false;
     } 
     return this.mostrarBusqueda = true;
+  }
+
+  resetearLista(){
+    console.log("lista")
+    this.busqueda = "";
+    this.buscar()
+
   }
 
 }
